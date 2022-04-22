@@ -14,10 +14,13 @@ public class LigneCommande {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "quantite_produit")
-    private Double quantiteProduit;
-
-    /*@ManyToOne
-    @JoinColumn(name = "produit_id")
-    private Produit produit;*/
+    private Double quantite;
+    @Column(name = "prix_unitaire")
+    private Double prixUnitaire;
+    @ManyToOne
+    private Produit produit;
+    @ManyToOne
+    private Commande commande;
+    @ManyToOne
+    private Panier panier;
 }

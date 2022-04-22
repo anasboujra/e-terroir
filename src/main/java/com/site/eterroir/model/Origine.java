@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -16,4 +18,7 @@ public class Origine {
     private Long id;
     @Column(unique = true)
     private String nom;
+
+    @OneToMany(mappedBy = "origine")
+    private List<ProduitMatiereAsso> produitMatiereAssos = new ArrayList<>();
 }

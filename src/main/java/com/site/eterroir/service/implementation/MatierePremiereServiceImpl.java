@@ -63,7 +63,6 @@ public class MatierePremiereServiceImpl implements MatierePremiereService {
         MatierePremiereDto matiereDto = new MatierePremiereDto();
         matiereDto.setId(matiere.getId());
         matiereDto.setNom(matiere.getNom());
-        matiereDto.setDescription(matiere.getDescription());
 
         return matiereDto;
     };
@@ -72,7 +71,6 @@ public class MatierePremiereServiceImpl implements MatierePremiereService {
         MatierePremiere matiere = new MatierePremiere();
         matiere.setId(matiereDto.getId());
         matiere.setNom(matiereDto.getNom());
-        matiere.setDescription(matiereDto.getDescription());
 
         return matiere;
     };

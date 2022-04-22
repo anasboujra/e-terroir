@@ -1,43 +1,36 @@
 package com.site.eterroir.service.implementation;
 
-
-import com.site.eterroir.dto.CategorieDto;
 import com.site.eterroir.model.Categorie;
 import com.site.eterroir.repository.CategorieRepo;
 import com.site.eterroir.service.CategorieService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
 @Service
 @Transactional
+@Slf4j
 public class CategorieServiceImpl implements CategorieService {
 
     private final CategorieRepo categorieRepo;
 
     @Override
-    public CategorieDto create(CategorieDto categorieDto) {
-        Categorie categorie = convertToEntity(categorieDto);
-        return convertToDto(categorieRepo.save(categorie));
+    public Categorie create(Categorie categorie) {
+        return categorieRepo.save(categorie);
     }
 
     @Override
-    public List<CategorieDto> list() {
-        List<Categorie> categories = categorieRepo.findAll();
-        List<CategorieDto> dtoList = new ArrayList<>();
-        for(Categorie categorie : categories){
-            dtoList.add(convertToDto(categorie));
-        }
-        return dtoList;
+    public List<Categorie> list() {
+        return categorieRepo.findAll();
     }
 
     @Override
-    public CategorieDto get(Long id) {
-        return convertToDto(categorieRepo.findById(id).get());
+    public Categorie get(Long id) {
+        return categorieRepo.findById(id).get();
     }
 
     @Override
@@ -47,33 +40,13 @@ public class CategorieServiceImpl implements CategorieService {
     }
 
     @Override
-    public CategorieDto update(Long id, CategorieDto categorieDto) throws Exception {
+    public Categorie update(Long id, Categorie categorie) throws Exception {
         if(categorieRepo.findById(id).isPresent()) {
-            Categorie categorie = convertToEntity(categorieDto);
             categorie.setId(id);
-            return convertToDto(categorieRepo.save(categorie));
+            return categorieRepo.save(categorie);
         } else{
             throw new Exception("Id n'existe pas");
         }
     }
-
-
-    // DTO conversion:
-
-    private CategorieDto convertToDto(Categorie categorie){
-        CategorieDto categorieDto = new CategorieDto();
-        categorieDto.setId(categorie.getId());
-        categorieDto.setNom(categorie.getNom());
-
-        return categorieDto;
-    };
-
-    private Categorie convertToEntity(CategorieDto categorieDto){
-        Categorie categorie = new Categorie();
-        categorie.setId(categorieDto.getId());
-        categorie.setNom(categorieDto.getNom());
-
-        return categorie;
-    };
 
 }

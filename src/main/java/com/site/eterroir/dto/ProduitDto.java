@@ -15,6 +15,10 @@ public class ProduitDto {
     private String unite;
     private Double quantite;
 
+    private Long idCategorie;
+
+    private Long idCooperative;
+
     private Map<Long, Long> idMatiereIdOrigine = new HashMap<>();
 
 }

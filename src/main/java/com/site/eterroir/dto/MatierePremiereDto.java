@@ -7,6 +7,5 @@ public class MatierePremiereDto {
 
     private Long id;
     private String nom;
-    private String description;
 
 }

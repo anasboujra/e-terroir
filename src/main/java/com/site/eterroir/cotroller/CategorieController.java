@@ -1,6 +1,6 @@
 package com.site.eterroir.cotroller;
 
-import com.site.eterroir.dto.CategorieDto;
+import com.site.eterroir.model.Categorie;
 import com.site.eterroir.service.CategorieService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -27,14 +27,13 @@ public class CategorieController {
     }
 
     @PostMapping
-    public ResponseEntity createCategorie(@RequestBody CategorieDto categorieDto) throws URISyntaxException {
-        CategorieDto createdCategorieDto = categorieService.create(categorieDto);
-        return ResponseEntity.created(new URI("/api/categories/" + createdCategorieDto.getId())).body(createdCategorieDto);
+    public ResponseEntity createCategorie(@RequestBody Categorie categorie) throws URISyntaxException {
+        return ResponseEntity.created(new URI("/api/categories/" + categorie.getId())).body(categorie);
     }
 
     @PutMapping({"{id}"})
-    public ResponseEntity updateCategorie(@PathVariable Long id, @RequestBody CategorieDto categorieDto) throws Exception {
-        return ResponseEntity.ok(categorieService.update(id, categorieDto));
+    public ResponseEntity updateCategorie(@PathVariable Long id, @RequestBody Categorie categorie) throws Exception {
+        return ResponseEntity.ok(categorieService.update(id, categorie));
     }
 
     @DeleteMapping("{id}")

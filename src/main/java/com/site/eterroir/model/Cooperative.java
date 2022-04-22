@@ -5,29 +5,26 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Cooperative {
+public class Cooperative extends Utilisateur {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     private String nom;
     private String secteur;
     private String region;
-    @Column(unique = true)
-    private String email;
-    @Column(name = "mot_de_passe")
-    private String motDePasse;
+    private String adresse;
+    @Column(name = "num_tele")
+    private String numTele;
+    @OneToMany(mappedBy = "cooperative")
+    private List<Produit> produits = new ArrayList<>();
 
-    /*@OneToMany(
-            mappedBy = "cooperative",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
-    )
-    private List<Produit> produits;
-*/
+    public Cooperative(String email, String motDePasse) {
+        setEmail(email);
+        setMotDePasse(motDePasse);
+    }
 }

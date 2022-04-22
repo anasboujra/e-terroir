@@ -4,21 +4,23 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @Entity
-@Table(name = "Commande")
 public class Commande {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long reference;
-    @Column(name = "date_commande")
-    private LocalDateTime dateCommande;
-    @Column(name= "etat_commande")
-    private String etatCommande;
-    private String destination;
-
-    /*@OneToMany
-    private List<LigneCommande> lignes;*/
+    private Long id;
+    private LocalDateTime date;
+    private String etat;
+    @Column(name= "prix_total")
+    private Long prixTotal;
+    @ManyToOne
+    private Client client;
+    @OneToMany(mappedBy = "commande")
+    private List<LigneCommande> lignes = new ArrayList<>();
+    @OneToOne
+    private Panier panier;
 }

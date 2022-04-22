@@ -16,7 +16,6 @@ import java.util.List;
 public class Produit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
     private String nom;
     private String description;
@@ -25,8 +24,11 @@ public class Produit {
     private Double quantite;
     @ManyToOne
     private Categorie categorie;
-
+    @ManyToOne
+    private Cooperative cooperative;
     @OneToMany(mappedBy = "produit", cascade = CascadeType.ALL)
     private List<ProduitMatiereAsso> produitMatieresAssos = new ArrayList<>();
+    @OneToMany(mappedBy = "produit")
+    private List<LigneCommande> lignes = new ArrayList<>();
 
 }

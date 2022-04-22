@@ -1,13 +1,17 @@
 package com.site.eterroir.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class MatierePremiere {
 
     @Id
@@ -15,8 +19,7 @@ public class MatierePremiere {
     private Long id;
     @Column(unique = true)
     private String nom;
-    private String description;
 
     @OneToMany(mappedBy = "matierePremiere")
-    private List<ProduitMatiereAsso> produitMatiereAsso = new ArrayList<>();
+    private List<ProduitMatiereAsso> produitMatiereAssos = new ArrayList<>();
 }

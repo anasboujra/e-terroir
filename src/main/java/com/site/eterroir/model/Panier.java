@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -14,12 +16,8 @@ public class Panier {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    /*@ManyToMany
-    @JoinTable(
-            name = "panier_produits",
-            joinColumns = @JoinColumn(name="panier_id"),
-            inverseJoinColumns = @JoinColumn(name = "produit_id")
-            )
-    private List<Produit> produits;*/
+    @OneToMany(mappedBy = "panier")
+    private List<LigneCommande> lignes = new ArrayList<>();
+    @OneToOne
+    private Client client;
 }

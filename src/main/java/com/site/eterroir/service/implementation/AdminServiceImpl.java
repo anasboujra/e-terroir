@@ -5,22 +5,17 @@ import com.site.eterroir.repository.AdminRepo;
 import com.site.eterroir.service.AdminService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
 @Service
 @Transactional
 @Slf4j
-public class AdminServiceImpl implements AdminService, UserDetailsService {
+public class AdminServiceImpl implements AdminService {
 
     private final AdminRepo adminRepo;
     private final PasswordEncoder passwordEncoder;
@@ -58,17 +53,4 @@ public class AdminServiceImpl implements AdminService, UserDetailsService {
         }
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Admin admin = adminRepo.findByEmail(email);
-        if(admin == null){
-            log.info("Admin not found");
-            throw new UsernameNotFoundException("Admin not found");
-        } else {
-            log.info("Admin found in the database: " + email);
-        }
-        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority("ADMIN_ROLE"));
-        return new org.springframework.security.core.userdetails.User(admin.getEmail(), admin.getMotDePasse(), authorities);
-    }
 }
