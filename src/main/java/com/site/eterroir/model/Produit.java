@@ -5,6 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,15 +16,21 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Produit {
+public class Produit implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank(message = "Obligatoire")
     private String nom;
+    @NotBlank(message = "Obligatoire")
     private String description;
+    @NotNull(message = "Obligatoire")
     private Double prix;
+    @NotBlank(message = "Obligatoire")
     private String unite;
+    @NotNull(message = "Obligatoire")
     private Double quantite;
+
     @ManyToOne
     private Categorie categorie;
     @ManyToOne

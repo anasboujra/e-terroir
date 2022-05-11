@@ -10,5 +10,5 @@ public interface ClientService {
     List<Client> list();
     Client get(Long id);
     Boolean delete(Long id);
-    Client update(Long id, Client client) throws Exception;
+    Client update(Long id, Client client);
 }

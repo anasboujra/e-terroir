@@ -6,9 +6,9 @@ import java.util.List;
 
 
 public interface AdminService {
-    Admin create(Admin admin);
+    Admin create (Admin admin);
     List<Admin> list();
     Admin get(Long id);
-    Boolean delete(Long id);
-    Admin update(Long id, Admin admin) throws Exception;
+    boolean delete(Long id);
+    Admin update(Long id, Admin admin);
 }

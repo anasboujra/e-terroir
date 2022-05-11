@@ -1,52 +1,91 @@
 package com.site.eterroir.service.implementation;
 
+import com.site.eterroir.dto.CategorieDto;
 import com.site.eterroir.model.Categorie;
 import com.site.eterroir.repository.CategorieRepo;
+import com.site.eterroir.security.SecurityService;
 import com.site.eterroir.service.CategorieService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
 @Service
 @Transactional
-@Slf4j
 public class CategorieServiceImpl implements CategorieService {
 
     private final CategorieRepo categorieRepo;
 
     @Override
-    public Categorie create(Categorie categorie) {
-        return categorieRepo.save(categorie);
+    public CategorieDto create(CategorieDto categorieDto) {
+        if(SecurityService.isAdmin()) {
+            Categorie categorie = dtoToEntity(categorieDto);
+            return entityToDto(categorieRepo.save(categorie));
+        } else {
+            throw new AccessDeniedException("Vous n'avez pas l'autorisation");
+        }
     }
 
     @Override
-    public List<Categorie> list() {
-        return categorieRepo.findAll();
+    public List<CategorieDto> list() {
+        List<Categorie> categories = categorieRepo.findAll();
+        List<CategorieDto> dtoList = new ArrayList<>();
+        for(Categorie categorie : categories){
+            dtoList.add(entityToDto(categorie));
+        }
+        return dtoList;
     }
 
     @Override
-    public Categorie get(Long id) {
-        return categorieRepo.findById(id).get();
+    public CategorieDto get(Long id) {
+        return entityToDto(categorieRepo.findById(id).get());
     }
 
     @Override
     public Boolean delete(Long id) {
-        categorieRepo.deleteById(id);
-        return true;
+        if(SecurityService.isAdmin()) {
+            categorieRepo.deleteById(id);
+            return true;
+        } else {
+            throw new AccessDeniedException("Vous n'avez pas l'autorisation");
+        }
     }
 
     @Override
-    public Categorie update(Long id, Categorie categorie) throws Exception {
-        if(categorieRepo.findById(id).isPresent()) {
-            categorie.setId(id);
-            return categorieRepo.save(categorie);
-        } else{
-            throw new Exception("Id n'existe pas");
+    public CategorieDto update(Long id, CategorieDto categorieDto) {
+        if(SecurityService.isAdmin()) {
+            Categorie dbCategorie = categorieRepo.findById(id).get();
+            Categorie categorie = dtoToEntity(categorieDto);
+            if(categorie.getNom() != null)
+                dbCategorie.setNom(categorie.getNom());
+            return entityToDto(categorieRepo.save(dbCategorie));
+        } else {
+            throw new AccessDeniedException("Vous n'avez pas l'autorisation");
         }
     }
+
+
+    // DTO conversion:
+
+    private CategorieDto entityToDto(Categorie categorie){
+        CategorieDto categorieDto = new CategorieDto();
+        categorieDto.setId(categorie.getId());
+        categorieDto.setNom(categorie.getNom());
+
+        return categorieDto;
+    };
+
+    private Categorie dtoToEntity(CategorieDto categorieDto){
+        Categorie categorie = new Categorie();
+        categorie.setId(categorieDto.getId());
+        categorie.setNom(categorieDto.getNom());
+
+        return categorie;
+    };
 
 }

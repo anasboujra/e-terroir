@@ -10,5 +10,5 @@ public interface MatierePremiereService {
     List<MatierePremiereDto> list();
     MatierePremiereDto get(Long id);
     Boolean delete(Long id);
-    MatierePremiereDto update(Long id, MatierePremiereDto matiereDto) throws Exception;
+    MatierePremiereDto update(Long id, MatierePremiereDto matiereDto);
 }

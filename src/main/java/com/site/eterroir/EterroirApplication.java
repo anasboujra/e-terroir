@@ -1,8 +1,12 @@
 package com.site.eterroir;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.site.eterroir.model.Admin;
 import com.site.eterroir.model.Client;
 import com.site.eterroir.model.Cooperative;
+import com.site.eterroir.repository.AdminRepo;
+import com.site.eterroir.repository.ClientRepo;
+import com.site.eterroir.repository.CooperativeRepo;
 import com.site.eterroir.service.AdminService;
 import com.site.eterroir.service.ClientService;
 import com.site.eterroir.service.CooperativeService;
@@ -12,6 +16,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.time.LocalDate;
 
 @SpringBootApplication
 public class EterroirApplication {
@@ -26,18 +32,17 @@ public class EterroirApplication {
 	}
 
 	@Bean
-	public CommandLineRunner run(AdminService adminService,
-								 CooperativeService cooperativeService,
-								 ClientService clientService) throws Exception {
+	public ObjectMapper objectMapper(){
+		return new ObjectMapper();
+	}
+
+	@Bean
+	public CommandLineRunner run(AdminRepo adminRepo) {
 		return args -> {
-			if(adminService.list().isEmpty()){
-				adminService.create(new Admin("admin@email.com", "0000"));
-			}
-			if(cooperativeService.list().isEmpty()){
-				cooperativeService.create(new Cooperative("cooperative@email.com", "0000"));
-			}
-			if(clientService.list().isEmpty()){
-				clientService.create(new Client("client@email.com", "0000"));
+			if(adminRepo.findAll().isEmpty()){
+				Admin admin = new Admin("anasboujra@email.com", passwordEncoder().encode("0000"),
+						"0604384177", "Boujra", "Anas", "Jk36429", LocalDate.of(1999, 5, 28));
+				adminRepo.save(admin);
 			}
 		};
 	}

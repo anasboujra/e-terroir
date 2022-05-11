@@ -6,25 +6,24 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProduitMatiereAsso {
+public class ProduitMatiereAsso implements Serializable {
 
     @EmbeddedId
-    ProduitMatiereKey id = new ProduitMatiereKey();
+    private ProduitMatiereKey id = new ProduitMatiereKey();
 
     @ManyToOne
     @MapsId("idProduit")
-    @JoinColumn(name = "id_produit")
-    Produit produit;
+    private Produit produit;
 
     @ManyToOne
     @MapsId("idMatierePremiere")
-    @JoinColumn(name = "id_matiere")
-    MatierePremiere matierePremiere;
+    private MatierePremiere matierePremiere;
 
     @ManyToOne
     private Origine origine;

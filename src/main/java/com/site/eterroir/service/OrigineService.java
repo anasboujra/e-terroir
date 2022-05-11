@@ -1,13 +1,13 @@
 package com.site.eterroir.service;
 
-import com.site.eterroir.model.Origine;
+import com.site.eterroir.dto.OrigineDto;
 
 import java.util.List;
 
 public interface OrigineService {
-    Origine create(Origine origine);
-    List<Origine> list();
-    Origine get(Long id);
+    OrigineDto create(OrigineDto origineDto);
+    List<OrigineDto> list();
+    OrigineDto get(Long id);
     Boolean delete(Long id);
-    Origine update(Long id, Origine origine) throws Exception;
+    OrigineDto update(Long id, OrigineDto origineDto);
 }

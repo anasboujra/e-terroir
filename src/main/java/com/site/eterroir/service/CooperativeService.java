@@ -10,5 +10,5 @@ public interface CooperativeService {
     List<Cooperative> list();
     Cooperative get(Long id);
     Boolean delete(Long id);
-    Cooperative update(Long id, Cooperative cooperative) throws Exception;
+    Cooperative update(Long id, Cooperative cooperative);
 }

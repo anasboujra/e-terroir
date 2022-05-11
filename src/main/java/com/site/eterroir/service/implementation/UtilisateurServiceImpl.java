@@ -23,7 +23,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @Service
 @Transactional
-@Slf4j
 public class UtilisateurServiceImpl implements UtilisateurService, UserDetailsService {
 
     private final AdminRepo adminRepo;
@@ -50,12 +49,10 @@ public class UtilisateurServiceImpl implements UtilisateurService, UserDetailsSe
                     authorities.add(new SimpleGrantedAuthority("CLIENT_ROLE"));
                     utilisateur = new User(client.getEmail(), client.getMotDePasse(), authorities);
                 } else {
-                    log.info("User not found");
                     throw new UsernameNotFoundException("User not found");
                 }
             }
         }
-
         return utilisateur;
     }
 

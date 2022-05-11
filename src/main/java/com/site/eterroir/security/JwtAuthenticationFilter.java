@@ -1,5 +1,7 @@
-package com.site.eterroir.security.filter;
+package com.site.eterroir.security;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.site.eterroir.model.Utilisateur;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.extern.slf4j.Slf4j;
@@ -24,19 +26,28 @@ import static com.site.eterroir.security.SecurityPermissions.LOGIN_URL;
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private final AuthenticationManager authenticationManager;
+    private final ObjectMapper objectMapper;
 
-    public JwtAuthenticationFilter(AuthenticationManager authenticationManager){
+    public JwtAuthenticationFilter(AuthenticationManager authenticationManager,
+                                   ObjectMapper objectMapper){
         this.authenticationManager = authenticationManager;
+        this.objectMapper = objectMapper;
         setFilterProcessesUrl(LOGIN_URL);
     }
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request,
                                                 HttpServletResponse response) throws AuthenticationException {
-        String email = request.getParameter("email");
-        String motDePasse = request.getParameter("motDePasse");
-        log.info("Trying to login with Email: {}", email);
-        return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, motDePasse));
+
+        Utilisateur user = null;
+        try {
+            user = objectMapper.readValue(request.getInputStream(), Utilisateur.class);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        log.info("Trying to login with Email: {}", user.getEmail());
+        return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getEmail(),
+                user.getMotDePasse()));
     }
 
     @Override

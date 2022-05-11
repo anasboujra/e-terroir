@@ -6,7 +6,7 @@ import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 @Data
-public class MatierePremiereDto implements Serializable {
+public class OrigineDto implements Serializable {
 
     private Long id;
     @NotBlank(message = "Obligatoire")

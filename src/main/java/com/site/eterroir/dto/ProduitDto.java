@@ -2,23 +2,31 @@ package com.site.eterroir.dto;
 
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 @Data
-public class ProduitDto {
+public class ProduitDto implements Serializable {
 
     private Long id;
+    @NotBlank(message = "Obligatoire")
     private String nom;
+    @NotBlank(message = "Obligatoire")
     private String description;
+    @NotNull(message = "Obligatoire")
     private Double prix;
+    @NotBlank(message = "Obligatoire")
     private String unite;
+    @NotNull(message = "Obligatoire")
     private Double quantite;
 
-    private Long idCategorie;
+    private String categorie;
 
-    private Long idCooperative;
+    private String cooperative;
 
-    private Map<Long, Long> idMatiereIdOrigine = new HashMap<>();
+    private Map<String, String> matiereOrigine = new HashMap<>();
 
 }

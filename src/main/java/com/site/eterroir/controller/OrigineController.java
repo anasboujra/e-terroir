@@ -1,12 +1,12 @@
-package com.site.eterroir.cotroller;
+package com.site.eterroir.controller;
 
-
-import com.site.eterroir.model.Origine;
+import com.site.eterroir.dto.OrigineDto;
 import com.site.eterroir.service.OrigineService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -28,14 +28,14 @@ public class OrigineController {
     }
 
     @PostMapping
-    public ResponseEntity createOrigine(@RequestBody Origine origine) throws URISyntaxException {
-        Origine createdOrigine = origineService.create(origine);
-        return ResponseEntity.created(new URI("/api/origines/" + createdOrigine.getId())).body(createdOrigine);
+    public ResponseEntity createOrigine(@Valid @RequestBody OrigineDto origineDto) throws URISyntaxException {
+        OrigineDto createdDto = origineService.create(origineDto);
+        return ResponseEntity.created(new URI("/api/origines/" + createdDto.getId())).body(createdDto);
     }
 
     @PutMapping({"{id}"})
-    public ResponseEntity updateOrigine(@PathVariable Long id, @RequestBody Origine origine) throws Exception {
-        return ResponseEntity.ok(origineService.update(id, origine));
+    public ResponseEntity updateOrigine(@PathVariable Long id, @RequestBody OrigineDto origineDto) {
+        return ResponseEntity.ok(origineService.update(id, origineDto));
     }
 
     @DeleteMapping("{id}")

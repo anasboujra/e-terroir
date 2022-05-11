@@ -1,4 +1,4 @@
-package com.site.eterroir.cotroller;
+package com.site.eterroir.controller;
 
 import com.site.eterroir.model.Client;
 import com.site.eterroir.service.ClientService;
@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -27,13 +28,13 @@ public class ClientController {
     }
 
     @PostMapping
-    public ResponseEntity createClient(@RequestBody Client client) throws URISyntaxException {
+    public ResponseEntity createClient(@Valid @RequestBody Client client) throws URISyntaxException {
         Client createdClient = clientService.create(client);
         return ResponseEntity.created(new URI("/api/clients/" + createdClient.getId())).body(createdClient);
     }
 
     @PutMapping({"{id}"})
-    public ResponseEntity updateClient(@PathVariable Long id, @RequestBody Client client) throws Exception {
+    public ResponseEntity updateClient(@PathVariable Long id, @RequestBody Client client) {
         return ResponseEntity.ok(clientService.update(id, client));
     }
 

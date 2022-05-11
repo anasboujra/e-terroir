@@ -1,4 +1,4 @@
-package com.site.eterroir.cotroller;
+package com.site.eterroir.controller;
 
 import com.site.eterroir.dto.MatierePremiereDto;
 import com.site.eterroir.service.MatierePremiereService;
@@ -6,12 +6,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-
 @RestController
-@RequestMapping("/api/matieres-premieres")
+@RequestMapping("/api/matieres")
 @RequiredArgsConstructor
 public class MatierePremiereController {
 
@@ -28,13 +28,13 @@ public class MatierePremiereController {
     }
 
     @PostMapping
-    public ResponseEntity createMatierePremiere(@RequestBody MatierePremiereDto matiereDto) throws URISyntaxException {
-        MatierePremiereDto createdMatiereDto = matiereService.create(matiereDto);
-        return ResponseEntity.created(new URI("/api/matieres-premieres/" + createdMatiereDto.getId())).body(createdMatiereDto);
+    public ResponseEntity createMatierePremiere(@Valid @RequestBody MatierePremiereDto matiereDto) throws URISyntaxException {
+        MatierePremiereDto createdDto = matiereService.create(matiereDto);
+        return ResponseEntity.created(new URI("/api/matieres/" + createdDto.getId())).body(createdDto);
     }
 
     @PutMapping({"{id}"})
-    public ResponseEntity updateMatierePremiere(@PathVariable Long id, @RequestBody MatierePremiereDto matiereDto) throws Exception {
+    public ResponseEntity updateMatierePremiere(@PathVariable Long id, @RequestBody MatierePremiereDto matiereDto) {
         return ResponseEntity.ok(matiereService.update(id, matiereDto));
     }
 
