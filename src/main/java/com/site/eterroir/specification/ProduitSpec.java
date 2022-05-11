@@ -24,7 +24,8 @@ import org.springframework.data.jpa.domain.Specification;
         @Spec(path = "quantite", params = "search", spec = Equal.class),
         @Spec(path = "categorie.nom", params = "search", spec = Like.class),
         @Spec(path = "a.matierePremiere.nom", params = "search", spec = Like.class),
-        @Spec(path = "a.origine.nom", params = "search", spec = Like.class)
+        @Spec(path = "a.origine.nom", params = "search", spec = Like.class),
+        @Spec(path = "cooperative.nom", params = "search", spec = Like.class)
 })
 public interface ProduitSpec extends Specification<Produit> {
 }

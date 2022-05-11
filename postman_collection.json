@@ -1,0 +1,1084 @@
+{
+	"info": {
+		"_postman_id": "fe58115b-5200-424e-b0a9-a8e25b8b3024",
+		"name": "e-terroir",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login and register",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"tarjijt@email.com\",\r\n    \"motDePasse\": \"0000\"\r\n}d"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/connexion/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"connexion",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"client2@email.com\",\r\n    \"motDePasse\" : \"0000\",\r\n    \"numTele\": \"0627194677\",\r\n    \"nom\": \"nom2\",\r\n    \"prenom\": \"prenom2\",\r\n    \"cin\": \"K33371\",\r\n    \"dateNaissance\": \"1991-01-10\",\r\n    \"adresse\" : \"Agadir Tilila\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/clients/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clients",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJUYXJqaWp0QGVtYWlsLmNvbSIsImV4cCI6MTY1MzQ4MDQyOCwicm9sZXMiOlt7ImF1dGhvcml0eSI6IkNPT1BFUkFUSVZFX1JPTEUifV19.IW4oDJEDDlE2hyTVq1Aa8AK-uD-qq5j5CXt0WuRON0adzzTqlItJHpwOPQPZtHx6a8WFV51hQ_XC6Z9tQl-Oow",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/admins/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"admins",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbmFzYm91anJhQGVtYWlsLmNvbSIsImV4cCI6MTY1MzQzNzcyOCwicm9sZXMiOlt7ImF1dGhvcml0eSI6IkFETUlOX1JPTEUifV19.hpch0jEs9tvjaglK7TtWqWCDyJcxG-d0ayPRMMKq-lxPDZ40razFeQPn23t-Lj8Cm6Guw3G8DdJ5sZjXulNDyg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"ismailkraim@email.com\",\r\n    \"motDePasse\" : \"0000\",\r\n    \"numTele\": \"0612345678\",\r\n    \"nom\": \"kraim\",\r\n    \"prenom\": \"ismail\",\r\n    \"cin\": \"Ei19821\",\r\n    \"dateNaissance\": \"1999-05-28\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/admins/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"admins",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbmFzYm91anJhQGVtYWlsLmNvbSIsImV4cCI6MTY1MzQzODA3MCwicm9sZXMiOlt7ImF1dGhvcml0eSI6IkFETUlOX1JPTEUifV19.2WdCPyowUwWV-wdvHSiqNzXf660Yg36_LRqtaduKusOI_z5Phy9TmS01YSJX1Qicsw1IsvaUMTqfIa_HD9tGmQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\":\"kraim\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/admins/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"admins",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjbGllbnQyQGVtYWlsLmNvbSIsImV4cCI6MTY1MzQzOTQ2NCwicm9sZXMiOlt7ImF1dGhvcml0eSI6IkNMSUVOVF9ST0xFIn1dfQ.r41STSdy9b2oIFI0LhDbLWdMVYLhO8d8M6XctBc_qJQiTPtu30fa9D9jVSUQ6NIOhQmAADPLPJpAp52xofizdA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/admins/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"admins",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "client",
+			"item": [
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjbGllbnQyQGVtYWlsLmNvbSIsImV4cCI6MTY1MzQzOTQ2NCwicm9sZXMiOlt7ImF1dGhvcml0eSI6IkNMSUVOVF9ST0xFIn1dfQ.r41STSdy9b2oIFI0LhDbLWdMVYLhO8d8M6XctBc_qJQiTPtu30fa9D9jVSUQ6NIOhQmAADPLPJpAp52xofizdA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/clients/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clients",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"client2@email.com\",\r\n    \"motDePasse\" : \"0000\",\r\n    \"numTele\": \"0627194677\",\r\n    \"nom\": \"nom2\",\r\n    \"prenom\": \"prenom2\",\r\n    \"cin\": \"K33371\",\r\n    \"dateNaissance\": \"1991-01-10\",\r\n    \"adresse\" : \"Agadir Tilila\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/clients/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clients",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjbGllbnQyQGVtYWlsLmNvbSIsImV4cCI6MTY1MzQzOTQ2NCwicm9sZXMiOlt7ImF1dGhvcml0eSI6IkNMSUVOVF9ST0xFIn1dfQ.r41STSdy9b2oIFI0LhDbLWdMVYLhO8d8M6XctBc_qJQiTPtu30fa9D9jVSUQ6NIOhQmAADPLPJpAp52xofizdA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\":\"nana\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/clients/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clients",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbmFzYm91anJhQGVtYWlsLmNvbSIsImV4cCI6MTY1MzQzODA3MCwicm9sZXMiOlt7ImF1dGhvcml0eSI6IkFETUlOX1JPTEUifV19.2WdCPyowUwWV-wdvHSiqNzXf660Yg36_LRqtaduKusOI_z5Phy9TmS01YSJX1Qicsw1IsvaUMTqfIa_HD9tGmQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/clients/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clients",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cooperative",
+			"item": [
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/cooperatives/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cooperatives",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbmFzYm91anJhQGVtYWlsLmNvbSIsImV4cCI6MTY1MzQzOTc3MCwicm9sZXMiOlt7ImF1dGhvcml0eSI6IkFETUlOX1JPTEUifV19.5pmvqNGDAw7c2Aijqm8rJ-Urp0b7-WboOr6X4TuVkf6Di7ex3iZUJnPI0x1U9lhgji58Ywz52LGaK75qZw1WwA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"Tarjijt@email.com\",\r\n    \"motDePasse\" : \"0000\",\r\n    \"numTele\": \"0528782201\",\r\n    \"nom\": \"Tarjijt\",\r\n    \"secteur\": \"alimentaire\",\r\n    \"region\" : \"Tafilalt\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/cooperatives/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cooperatives",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbmFzYm91anJhQGVtYWlsLmNvbSIsImV4cCI6MTY1MzQ0MTIwNywicm9sZXMiOlt7ImF1dGhvcml0eSI6IkFETUlOX1JPTEUifV19.Aawy5TB_8vFY-xkTbjokrio9ySLSYDFMo4jf_xwadgHXn-NIOvyV95VY5XEJ5zICsMsi3amMmWKstmWJz02xEw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\":\"Agdal\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/cooperatives/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cooperatives",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbmFzYm91anJhQGVtYWlsLmNvbSIsImV4cCI6MTY1MzQ0MTIwNywicm9sZXMiOlt7ImF1dGhvcml0eSI6IkFETUlOX1JPTEUifV19.Aawy5TB_8vFY-xkTbjokrio9ySLSYDFMo4jf_xwadgHXn-NIOvyV95VY5XEJ5zICsMsi3amMmWKstmWJz02xEw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/cooperatives/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cooperatives",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "origine",
+			"item": [
+				{
+					"name": "Get",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/origines/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"origines",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbmFzYm91anJhQGVtYWlsLmNvbSIsImV4cCI6MTY1MzQ0MTIwNywicm9sZXMiOlt7ImF1dGhvcml0eSI6IkFETUlOX1JPTEUifV19.Aawy5TB_8vFY-xkTbjokrio9ySLSYDFMo4jf_xwadgHXn-NIOvyV95VY5XEJ5zICsMsi3amMmWKstmWJz02xEw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\": \"Taroudant\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/origines/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"origines",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbmFzYm91anJhQGVtYWlsLmNvbSIsImV4cCI6MTY1MzQ0MTIwNywicm9sZXMiOlt7ImF1dGhvcml0eSI6IkFETUlOX1JPTEUifV19.Aawy5TB_8vFY-xkTbjokrio9ySLSYDFMo4jf_xwadgHXn-NIOvyV95VY5XEJ5zICsMsi3amMmWKstmWJz02xEw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\":\"Taroudant\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/origines/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"origines",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbmFzYm91anJhQGVtYWlsLmNvbSIsImV4cCI6MTY1MzQ0MTIwNywicm9sZXMiOlt7ImF1dGhvcml0eSI6IkFETUlOX1JPTEUifV19.Aawy5TB_8vFY-xkTbjokrio9ySLSYDFMo4jf_xwadgHXn-NIOvyV95VY5XEJ5zICsMsi3amMmWKstmWJz02xEw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/origines/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"origines",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "matiere-premiere",
+			"item": [
+				{
+					"name": "Get",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/matieres/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"matieres",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbmFzYm91anJhQGVtYWlsLmNvbSIsImV4cCI6MTY1MzQ0MTIwNywicm9sZXMiOlt7ImF1dGhvcml0eSI6IkFETUlOX1JPTEUifV19.Aawy5TB_8vFY-xkTbjokrio9ySLSYDFMo4jf_xwadgHXn-NIOvyV95VY5XEJ5zICsMsi3amMmWKstmWJz02xEw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\": \"miel\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/matieres/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"matieres",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbmFzYm91anJhQGVtYWlsLmNvbSIsImV4cCI6MTY1MzQ0MTIwNywicm9sZXMiOlt7ImF1dGhvcml0eSI6IkFETUlOX1JPTEUifV19.Aawy5TB_8vFY-xkTbjokrio9ySLSYDFMo4jf_xwadgHXn-NIOvyV95VY5XEJ5zICsMsi3amMmWKstmWJz02xEw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\":\"arachide\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/matieres/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"matieres",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbmFzYm91anJhQGVtYWlsLmNvbSIsImV4cCI6MTY1MzQ0MTIwNywicm9sZXMiOlt7ImF1dGhvcml0eSI6IkFETUlOX1JPTEUifV19.Aawy5TB_8vFY-xkTbjokrio9ySLSYDFMo4jf_xwadgHXn-NIOvyV95VY5XEJ5zICsMsi3amMmWKstmWJz02xEw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/matieres/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"matieres",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "categorie",
+			"item": [
+				{
+					"name": "Get",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/categories/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"categories",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbmFzYm91anJhQGVtYWlsLmNvbSIsImV4cCI6MTY1MzQ0MTIwNywicm9sZXMiOlt7ImF1dGhvcml0eSI6IkFETUlOX1JPTEUifV19.Aawy5TB_8vFY-xkTbjokrio9ySLSYDFMo4jf_xwadgHXn-NIOvyV95VY5XEJ5zICsMsi3amMmWKstmWJz02xEw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\": \"cosmetique\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/categories/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"categories",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbmFzYm91anJhQGVtYWlsLmNvbSIsImV4cCI6MTY1MzQ0MTIwNywicm9sZXMiOlt7ImF1dGhvcml0eSI6IkFETUlOX1JPTEUifV19.Aawy5TB_8vFY-xkTbjokrio9ySLSYDFMo4jf_xwadgHXn-NIOvyV95VY5XEJ5zICsMsi3amMmWKstmWJz02xEw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\":\"ss\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/categories/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"categories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbmFzYm91anJhQGVtYWlsLmNvbSIsImV4cCI6MTY1MzQ0MTIwNywicm9sZXMiOlt7ImF1dGhvcml0eSI6IkFETUlOX1JPTEUifV19.Aawy5TB_8vFY-xkTbjokrio9ySLSYDFMo4jf_xwadgHXn-NIOvyV95VY5XEJ5zICsMsi3amMmWKstmWJz02xEw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/categories/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"categories",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "produit",
+			"item": [
+				{
+					"name": "Get",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/produits",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"produits"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJUYXJqaWp0QGVtYWlsLmNvbSIsImV4cCI6MTY1MzQ0OTUxMSwicm9sZXMiOlt7ImF1dGhvcml0eSI6IkNPT1BFUkFUSVZFX1JPTEUifV19.BOk4b7MmKTlxXwskUFdPAlGFD8nstbZSD5DCM7W6vYK2Yt-hpDatBCzcjbpAETUaerqps5K5meHHPADsvYkrGg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\" : \"Amlo\",\r\n    \"description\" : \"naturel\",\r\n    \"prix\" : \"90\",\r\n    \"unite\" : \"1Kg\",\r\n    \"quantite\" : \"100\",\r\n    \"categorie\" : \"alimentaire\",\r\n    \"matiereOrigine\" : {\r\n        \"arachide\" : \"Agadir\",\r\n        \"argan\" : \"Ihahane\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/produits/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"produits",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBZ2RhbEBlbWFpbC5jb20iLCJleHAiOjE2NTM0NDQ2MjcsInJvbGVzIjpbeyJhdXRob3JpdHkiOiJDT09QRVJBVElWRV9ST0xFIn1dfQ.pLmmXtMBZPnXEbBqDUqQUv20XV4dVoR-rhmL6Jd7kpbG_-fObLqa5ta1Yc8t2w9b2Ux-u7zFb9FXG_myoCU3uQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\":\"Amlo\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/produits/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"produits",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBZ2RhbEBlbWFpbC5jb20iLCJleHAiOjE2NTM0NDQ2MjcsInJvbGVzIjpbeyJhdXRob3JpdHkiOiJDT09QRVJBVElWRV9ST0xFIn1dfQ.pLmmXtMBZPnXEbBqDUqQUv20XV4dVoR-rhmL6Jd7kpbG_-fObLqa5ta1Yc8t2w9b2Ux-u7zFb9FXG_myoCU3uQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/produits/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"produits",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by categorie",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/produits?categorie=cosmetique",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"produits"
+							],
+							"query": [
+								{
+									"key": "categorie",
+									"value": "cosmetique"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by matiere",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/produits?matiere=argan",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"produits"
+							],
+							"query": [
+								{
+									"key": "matiere",
+									"value": "argan"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/produits?search=huile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"produits"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "huile"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

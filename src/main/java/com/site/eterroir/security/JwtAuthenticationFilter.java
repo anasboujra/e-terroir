@@ -64,6 +64,6 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .claim("roles", springUser.getAuthorities())
                 .compact();
         response.addHeader(HEADER_NAME, TOKEN_PREFIX + accessToken);
-        log.info("The access token is generated and sent in the header");
+        log.info("Success : The access token is generated and sent in the header");
     }
 }
